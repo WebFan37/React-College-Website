@@ -5,6 +5,6 @@ import Appli from './composants/Appli.jsx';
 
 createRoot(document.getElementById('racine')).render(
   <StrictMode>
-    <Appli />
+    <Appli/>
   </StrictMode>,
 )
