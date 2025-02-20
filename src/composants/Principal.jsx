@@ -1,6 +1,7 @@
 import './Principal.scss';
 
-import teeshirts from "../data/teeshirts.json";
+
+import ListeProduits from './ListeProduits.jsx';
 
 function Principal() {
     
@@ -22,7 +23,7 @@ function Principal() {
                 </select>
                 </div>
                 <div className="tri">
-                    <label for="tri">Trier par : </label>
+                    <label htmlFor="tri">Trier par : </label>
                     <select name="tri" id="tri">
                         <option value="RAND()">Aléatoire</option>
                         <option value="prix ASC">Prix / ascendant</option>
@@ -35,34 +36,10 @@ function Principal() {
                 </div>
           </form>
         </section>
-      </article>
-  
-  <article className="principal liste-produits">
+    </article>
 
-    {teeshirts.map(
-        teeshirt => (
-           <div className="produit" data-pid={teeshirt.id}>
-                <span className="ventes">{teeshirt.ventes}</span>
-                <span className="image">
-                <img src={"images/produits/teeshirts/" + teeshirt.id + ".webp"} alt={teeshirt.nom} />
-                </span>
-                <div className="prd-info">
-                <span className="nom">{teeshirt.nom}</span>
-                <span className="prix">
-                <span className="montant">
-                {teeshirt.prix}
-                </span>
-                $
-                </span>
-            </div>
-      
-      <button className="btn-ajouter">Ajouter au panier</button>
-    </div>
-        )
+  <ListeProduits/>
 
-    )}
-    
-  </article>
   </main>
   )
 
