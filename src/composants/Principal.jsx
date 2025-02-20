@@ -3,7 +3,7 @@ import './Principal.scss';
 
 import ListeProduits from './ListeProduits.jsx';
 
-function Principal() {
+function Principal({panier, setPanier}) {
     
   return (
     <main className="Principal page-produits page-teeshirts">
@@ -38,7 +38,7 @@ function Principal() {
         </section>
     </article>
 
-  <ListeProduits/>
+  <ListeProduits panier={panier} setPanier={setPanier}/>
 
   </main>
   )

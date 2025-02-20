@@ -1,7 +1,8 @@
 import './Entete.scss';
 import logo from '../images/logo.png';
 
-function Entete() {
+function Entete({panier}) {
+
     
   return (
       
@@ -16,7 +17,12 @@ function Entete() {
             <label htmlFor="cc-btn-responsive" className="material-icons burger">menu</label>
             <a className="logo" href="#" title= "Page d'accueil"><img src={logo} alt="Accueil" /></a>
             <div className="panier-icone">
-            <div className="panier-badge ">1</div>
+            <div className="panier-badge ">
+                {
+                    // Reduce with 
+                    Object.values(panier).reduce((acc, article) => acc + article.qte, 0)
+                }
+            </div>
             <label htmlFor="panier-cc" className="material-icons">shopping_cart</label>
             <input type="checkbox" id="panier-cc" />
             <div className="sommaire-panier">
