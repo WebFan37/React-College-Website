@@ -2,6 +2,30 @@ import './Entete.scss';
 import logo from '../images/logo.png';
 
 function Entete({panier}) {
+    // console.log(Object.values(panier));
+
+
+    // const tableau = Object.values(panier);
+
+    // const qteArticles = tableau.reduce(
+    //     (accum, articleActual) => accum + articleActual.qte, 0
+    // )
+
+
+    // console.log(qteArticles);
+
+
+    // 
+    // const sommairePanier =
+    // Object.values(panier).reduce(
+    //     (accum, articleActual) => [accum[0] + articleActual.qte, accum[1] + articleActual.qte * articleActual.prix],
+    // {nb: 0, st: 0})
+    
+    // console.log(sommairePanier);
+
+   
+
+
 
     
   return (
@@ -17,25 +41,48 @@ function Entete({panier}) {
             <label htmlFor="cc-btn-responsive" className="material-icons burger">menu</label>
             <a className="logo" href="#" title= "Page d'accueil"><img src={logo} alt="Accueil" /></a>
             <div className="panier-icone">
-            <div className="panier-badge ">
+
+            {
+                // sommairePanier[0] > 0
+                //?
+                    <div className="panier-badge ">
                 {
                     // Reduce with 
-                    Object.values(panier).reduce((acc, article) => acc + article.qte, 0)
+                    // Object.valuess(panier).length
+                   Object.values(panier).reduce((acc, article) => acc + article.qte, 0)
+                   //sommairePanier[0]
                 }
-            </div>
+                    </div>
+
+                    //: ""
+            }
+
+
             <label htmlFor="panier-cc" className="material-icons">shopping_cart</label>
             <input type="checkbox" id="panier-cc" />
             <div className="sommaire-panier">
                 <div className="ligne1">
                 <span className="nb-articles">
                     <span className="etiquette">#Articles : </span>
-                    <span className="nombre">1</span>
+                    <span className="nombre">
+
+                        { // Reduce again to display the number of articles
+                                Object.values(panier).reduce((accum, article) => accum + article.qte, 0)
+                                //sommairePanier[0]
+                        }
+                        
+                    </span>
                 </span>
                 <label htmlFor="panier-cc" className="material-icons">close</label>
                 </div>
                 <div className="ligne2">
                 <span className="sous-titre">Sous-total du panier</span>
-                <span className="sous-total montant-fr">20.00</span>
+                <span className="sous-total montant-fr">
+                    {
+                        //Calculating the total pricing
+                       (Object.values(panier).reduce((accum, article) => accum + article.prix * article.qte, 0)).toFixed(2)
+                    }
+                </span>
                 </div>
                 <div className="ligne3 btn-afficher-panier">
                 <a href="#">Voir le panier d'achats</a>
